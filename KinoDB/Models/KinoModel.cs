@@ -9,6 +9,7 @@ namespace KinoDB.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Year { get; set; }
+        public string Miejscowosc { get; set; }
+        public string Ulica { get; set; }
     }
 }
