@@ -29,27 +29,56 @@ namespace KinoDB.Logic
 
         public KinoManager RemoveKino(int id)
         {
+            using (var context = new KinoContext())
+            {
+                var kinoToDelete = context.Kinos.SingleOrDefault(x => x.ID == id);
+                context.Kinos.Remove(kinoToDelete);
+                context.SaveChanges();
+            }
+                
             return this;
         }
 
         public KinoManager UpdateKino(KinoModel kinoModel)
         {
+            using (var context = new KinoContext())
+            {
+                context.Kinos.Update(kinoModel);
+                context.SaveChanges();
+            }
             return this;
         }
 
-        public KinoManager ChangeKino(int id, string newTitle)
+        public KinoManager ChangeKino(int id, string newKinoname)
         {
+            using (var context = new KinoContext())
+            {
+                var kinoToChangename = context.Kinos.Single(x => x.ID == id);
+                if(string.IsNullOrEmpty(newKinoname))
+                {
+                    newKinoname = "Brak Kina"; 
+                }
+                kinoToChangename.Name = newKinoname;
+                context.SaveChanges();
+            }
             return this;
         }
 
-        public KinoManager GetKino(int id)
+        public KinoModel GetKino(int id)
         {
-            return null;
+            using (var context = new KinoContext())
+            {
+                return context.Kinos.Single(x => x.ID == id);
+            }
         }
 
         public List<KinoModel> GetKinos()
         {
-            return null;
+            using (var context = new KinoContext())
+            {
+                var kinoList = context.Kinos.ToList();
+                return kinoList;
+            }           
         }
     }
 }
