@@ -10,6 +10,7 @@ namespace KinoDB.Logic
     {
         public KinoManager AddKino(KinoModel kinoModel)
         {
+           
             using(var context = new KinoContext())
             {
                 context.Kinos.Add(kinoModel);
@@ -49,26 +50,13 @@ namespace KinoDB.Logic
             return this;
         }
 
-        public KinoManager ChangeKino(int id, string newKinoname)
-        {
-            using (var context = new KinoContext())
-            {
-                var kinoToChangename = context.Kinos.Single(x => x.ID == id);
-                if(string.IsNullOrEmpty(newKinoname))
-                {
-                    newKinoname = "Brak Kina"; 
-                }
-                kinoToChangename.Name = newKinoname;
-                context.SaveChanges();
-            }
-            return this;
-        }
+        
 
         public KinoModel GetKino(int id)
         {
             using (var context = new KinoContext())
-            {
-                return context.Kinos.Single(x => x.ID == id);
+            {               
+                return context.Kinos.Single(x => x.ID == id);                              
             }
         }
 

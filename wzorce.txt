@@ -1,0 +1,53 @@
+Kompozyt:
+Wzorzec ten stosuje się, gdy wygodniej jest korzystać z pewnych operacji dla danego obiektu w ten sam sposób jak dla grupy obiektów, 
+np. rysując na ekranie prymitywy lub obiekty złożone z prymitywów; 
+zmieniając rozmiar zarówno pojedynczych prymitywów jak i obiektów złożonych z prymitywów (z zachowaniem proporcji).
+Wzorzec wyróżnia następujące elementy:
+
+Component - klasa abstrakcyjna reprezentująca pojedyncze obiekty Leaf, jak i kontenery tych obiektów.
+Leaf - typ prosty - nie ma potomków.
+Composite - przechowuje obiekty proste (Leaf), implementuje zachowanie elementów które zawiera.
+
+Obserwator:
+We wzorcu obserwator wyróżniamy dwa podstawowe typy obiektów:
+
+obserwowany (ang. observable, subject) - obiekt, o którym chcemy uzyskiwać informacje,
+obserwator (ang. observer, listener) - obiekt oczekujący na powiadomienie o zmianie stanu obiektu obserwowanego.
+Kiedy stan obiektu obserwowanego się zmienia, wywołuje on metodę powiadomObserwatorow(), która wysyła powiadomienia do wszystkich zarejestrowanych obserwatorów:
+
+Stosujemy w aplikacjach z graficznym interfejsem użytkownika. Rozpatrzmy mechanizm kopiowania pliku oraz okienko graficzne obrazujące postęp prac. 
+Mechanizm kopiujący jest niezależny od okienka i nie musi wiedzieć czy i w jaki sposób postępy są wyświetlane. 
+Z drugiej strony, do poprawnego wyświetlania okienko potrzebuje informacji z mechanizmu kopiowania:
+ile bajtów danych już skopiowano, kiedy została skopiowana kolejna porcja danych.
+
+Strategia:
+We wzorcu Strategia definiujemy wspólny interfejs dla wszystkich obsługiwanych algorytmów i zawierający wszystkie dozwolone operacje. 
+Następnie implementujemy go w poszczególnych klasach dostarczających konkretne algorytmy. Dodatkowo, we wzorcu wyróżniamy także klienta korzystającego z algorytmów. 
+Posiada on referencję do aktualnie używanej strategii oraz metodę ustawStrategie(), która pozwala ją zmienić.
+
+Elementy wzorca:
+
+Strategia – interfejs definiujący operacje, które muszą obsługiwać wszystkie dostępne algorytmy. 
+Zakładamy, że wszyscy klienci zainteresowani wykorzystaniem algorytmów będą używać właśnie tego interfejsu.
+Konkretna strategia – implementuje określony algorytm zgodnie ze zdefiniowanym interfejsem.
+Klient – użytkownik rodziny algorytmów posiadający referencję do obiektu Strategia.
+
+Metoda wytwórcza:
+kreacyjny wzorzec projektowy, którego celem jest dostarczenie interfejsu do tworzenia obiektów nieokreślonych jako powiązanych typów. 
+Tworzeniem egzemplarzy zajmują się podklasy.
+
+We wzorcu występują dwie ogólne klasy bądź interfejsy definiujące pewien typ zasobów (Product) oraz sposób ich tworzenia (Creator, metoda factoryMethod()). 
+Od nich wyprowadza się konkretne klasy zasobów (ConcreteProduct) wraz z tworzącymi je klasami wytwórczymi (ConcreteCreator), które dostarczają odpowiednią implementację metody factoryMethod(). 
+Komponent pragnący tworzyć zasoby i operować na nich, korzysta z ogólnych interfejsów Product oraz Creator, umożliwiając wybór konkretnej implementacji w sposób dynamiczny
+
+
+Dekorator:
+wzorzec projektowy należący do grupy wzorców strukturalnych. 
+Pozwala na dodanie nowej funkcji do istniejących klas dynamicznie podczas działania programu.
+Wzorzec dekoratora polega na opakowaniu oryginalnej klasy w nową klasę „dekorującą”. 
+Zwykle przekazuje się oryginalny obiekt jako parametr konstruktora dekoratora, metody dekoratora wywołują metody oryginalnego obiektu i dodatkowo implementują nową funkcję.
+
+Dekoratory są alternatywą dla dziedziczenia. 
+Dziedziczenie rozszerza zachowanie klasy w trakcie kompilacji, w przeciwieństwie do dekoratorów, które rozszerzają klasy w czasie działania programu.
+Ponieważ w większości obiektowych języków programowania nie można tworzyć nowych klas podczas działania programu i zwykle nie można przewidzieć z góry wszystkich kombinacji rozszerzeń klas, konieczne by było stworzenie nowej klasy dla każdej kombinacji. 
+Dekoratory są obiektami tworzonymi w czasie działania programu i mogą być łączone w różne kombinacje bezpośrednio przy użyciu.
