@@ -68,5 +68,13 @@ namespace KinoDB.Logic
                 return kinoList;
             }           
         }
+        public virtual List<KinoModel> GetKinosBy(string miejscowosc)
+        {
+            using (var context = new KinoContext())
+            {
+
+                return context.Kinos.Where(x => x.Name.Contains(miejscowosc)).ToList();
+            }
+        }
     }
 }

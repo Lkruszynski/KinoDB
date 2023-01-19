@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KinoDB.Migrations
 {
-    [DbContext(typeof(KinoContext))]
+    [DbContext(typeof(DbContext))]
     [Migration("20230109181545_init")]
     partial class init
     {

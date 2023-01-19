@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KinoDB.Migrations
 {
-    [DbContext(typeof(KinoContext))]
+    [DbContext(typeof(DbContext))]
     partial class KinoContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -16,6 +16,12 @@ namespace KinoDB.Controllers
             var kino = kinoManager.GetKinos();
             return View(kino);
         }
+        [HttpPost]
+        public IActionResult Index(string name)
+        {
+            var kino = kinoManager.GetKinosBy(name);
+            return View(kino);
+        }
         [HttpGet]
 
         public IActionResult Add()

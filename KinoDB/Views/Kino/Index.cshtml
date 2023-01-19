@@ -7,12 +7,24 @@
 <h1>Strona główna</h1>
 
 <p>
-    <a asp-action="Add" class="btn btn-success">Dodaj Kino   
+    <a asp-action="Add" class="btn btn-success">
+        Dodaj Kino
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 18 18">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
         </svg>
     </a>
 </p>
+<form a asp-action="Index" >
+    <div class="card bg-dark text-white">       
+
+        <div class="card-body">
+            <label>Właściciel Kina</label>
+            <input type="search" name="name" />
+
+            <input type="submit" value="Szukaj" class="btn btn-primary">
+        </div>
+    </div>
+</form>
 <table class="table table-striped table-hover table-bordered border-dark text-white">
     <thead>
         <tr>
@@ -25,7 +37,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Ulica)
             </th>
-            <th></th>
+            <th>
+                Action
+            </th>
         </tr>
     </thead>
     <tbody>
